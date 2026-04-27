@@ -398,8 +398,7 @@ Phase 3
 
 | Document | Purpose |
 |----------|---------|
-| `FRONTEND_GUIDE.md` | Deep dive — every component, every mock data location, every API needed |
-| `YPark_Architecture_v3.pdf` | Full database architecture and backend API design |
+| `FRONTEND_GUIDE.md` | Deep dive — every component, every mock data 
 
 ---
 
