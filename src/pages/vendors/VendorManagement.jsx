@@ -132,17 +132,17 @@ const mockVendors = [
 const kycConfig = {
   VERIFIED: {
     label: 'Verified',
-    className: 'bg-[#2E7D32]/10 text-[#2E7D32] border border-[#2E7D32]/20',
+    className: 'bg-ypark-success/10 text-ypark-success border border-ypark-success/20',
     icon: ShieldCheck,
   },
   PENDING: {
     label: 'Pending',
-    className: 'bg-[#F57F17]/10 text-[#F57F17] border border-[#F57F17]/20',
+    className: 'bg-ypark-warning/10 text-ypark-warning border border-ypark-warning/20',
     icon: Clock,
   },
   REJECTED: {
     label: 'Rejected',
-    className: 'bg-[#C0392B]/10 text-[#C0392B] border border-[#C0392B]/20',
+    className: 'bg-ypark-danger/10 text-ypark-danger border border-ypark-danger/20',
     icon: ShieldX,
   },
 }
@@ -150,22 +150,22 @@ const kycConfig = {
 const accountConfig = {
   ACTIVE: {
     label: 'Active',
-    className: 'bg-[#2E7D32]/10 text-[#2E7D32] border border-[#2E7D32]/20',
+    className: 'bg-ypark-success/10 text-ypark-success border border-ypark-success/20',
   },
   SUSPENDED: {
     label: 'Suspended',
-    className: 'bg-[#C0392B]/10 text-[#C0392B] border border-[#C0392B]/20',
+    className: 'bg-ypark-danger/10 text-ypark-danger border border-ypark-danger/20',
   },
   INACTIVE: {
     label: 'Inactive',
-    className: 'bg-[#506A84]/10 text-[#506A84] border border-[#506A84]/20',
+    className: 'bg-ypark-text-muted/10 text-ypark-text-muted border border-ypark-text-muted/20',
   },
 }
 
 const zoneStatusConfig = {
-  APPROVED: 'text-[#2E7D32]',
-  PENDING_APPROVAL: 'text-[#F57F17]',
-  REJECTED: 'text-[#C0392B]',
+  APPROVED: 'text-ypark-success',
+  PENDING_APPROVAL: 'text-ypark-warning',
+  REJECTED: 'text-ypark-danger',
 }
 
 const parkingAreaTypeLabel = {
@@ -181,9 +181,9 @@ const businessTypeLabel = {
 }
 
 const InfoRow = ({ label, value }) => (
-  <div className="flex justify-between items-start py-2.5 border-b border-[#F0F4F8] last:border-0">
-    <span className="text-[#506A84] text-xs font-medium w-36 shrink-0">{label}</span>
-    <span className="text-[#1A2332] text-xs font-semibold text-right">{value || '—'}</span>
+  <div className="flex justify-between items-start py-2.5 border-b border-ypark-light-gray last:border-0">
+    <span className="text-ypark-text-muted text-xs font-medium w-36 shrink-0">{label}</span>
+    <span className="text-ypark-text text-xs font-semibold text-right">{value || '—'}</span>
   </div>
 )
 
@@ -201,16 +201,16 @@ const VendorDetailPanel = ({ vendor, onClose, onToggleStatus }) => {
       <div className="relative w-[460px] h-full bg-white shadow-2xl flex flex-col overflow-hidden">
 
         {/* Header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#D1D5DC] bg-[#F0F4F8]">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-ypark-black/10 bg-ypark-light-gray">
           <div>
-            <h2 className="text-[#1A2332] font-bold text-sm">Vendor Details</h2>
-            <p className="text-[#506A84] text-xs mt-0.5">Full profile and parking area information</p>
+            <h2 className="text-ypark-text font-bold text-sm">Vendor Details</h2>
+            <p className="text-ypark-text-muted text-xs mt-0.5">Full profile and parking area information</p>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-[#D1D5DC] transition-colors"
+            className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-ypark-black/10 transition-colors"
           >
-            <X className="w-4 h-4 text-[#506A84]" />
+            <X className="w-4 h-4 text-ypark-text-muted" />
           </button>
         </div>
 
@@ -220,13 +220,13 @@ const VendorDetailPanel = ({ vendor, onClose, onToggleStatus }) => {
           {/* Vendor Header */}
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#1565C0] flex items-center justify-center text-white font-bold text-sm shrink-0">
+              <div className="w-10 h-10 rounded-full bg-ypark-deep-blue flex items-center justify-center text-white font-bold text-sm shrink-0">
                 {vendor.name.charAt(0)}
               </div>
               <div>
-                <h3 className="text-[#1A2332] font-bold text-sm">{vendor.name}</h3>
-                <p className="text-[#506A84] text-xs">{vendor.business_name}</p>
-                <p className="text-[#506A84] text-xs">{vendor.city}, {vendor.state}</p>
+                <h3 className="text-ypark-text font-bold text-sm">{vendor.name}</h3>
+                <p className="text-ypark-text-muted text-xs">{vendor.business_name}</p>
+                <p className="text-ypark-text-muted text-xs">{vendor.city}, {vendor.state}</p>
               </div>
             </div>
             <span className={`text-xs px-2 py-0.5 rounded-full font-medium border shrink-0 ${account.className}`}>
@@ -236,11 +236,11 @@ const VendorDetailPanel = ({ vendor, onClose, onToggleStatus }) => {
 
           {/* Contact */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1.5 text-[#506A84]">
+            <div className="flex items-center gap-1.5 text-ypark-text-muted">
               <Phone className="w-3.5 h-3.5" />
               <span className="text-xs">{vendor.phone}</span>
             </div>
-            <div className="flex items-center gap-1.5 text-[#506A84]">
+            <div className="flex items-center gap-1.5 text-ypark-text-muted">
               <Mail className="w-3.5 h-3.5" />
               <span className="text-xs">{vendor.email}</span>
             </div>
@@ -262,38 +262,38 @@ const VendorDetailPanel = ({ vendor, onClose, onToggleStatus }) => {
           </div>
 
           {/* Business Info */}
-          <div className="bg-[#F0F4F8] rounded-lg p-4">
-            <p className="text-[#1A2332] font-bold text-xs mb-2 uppercase tracking-wide">Business Details</p>
+          <div className="bg-ypark-light-gray rounded-lg p-4">
+            <p className="text-ypark-text font-bold text-xs mb-2 uppercase tracking-wide">Business Details</p>
             <InfoRow label="Business Type" value={businessTypeLabel[vendor.business_type]} />
             <InfoRow label="GST Number" value={vendor.gst_number} />
             <InfoRow label="Member Since" value={vendor.joined} />
           </div>
 
           {/* Bank Info */}
-          <div className="bg-[#F0F4F8] rounded-lg p-4">
-            <p className="text-[#1A2332] font-bold text-xs mb-2 uppercase tracking-wide">Bank Details</p>
+          <div className="bg-ypark-light-gray rounded-lg p-4">
+            <p className="text-ypark-text font-bold text-xs mb-2 uppercase tracking-wide">Bank Details</p>
             <InfoRow label="Account Holder" value={vendor.bank_holder_name} />
             <InfoRow label="Account Number" value={vendor.bank_account_number} />
             <InfoRow label="IFSC Code" value={vendor.bank_ifsc} />
           </div>
 
           {/* Parking Areas */}
-          <div className="bg-[#F0F4F8] rounded-lg p-4">
-            <p className="text-[#1A2332] font-bold text-xs mb-3 uppercase tracking-wide">
+          <div className="bg-ypark-light-gray rounded-lg p-4">
+            <p className="text-ypark-text font-bold text-xs mb-3 uppercase tracking-wide">
               Their Parking Areas ({vendor.zones_count})
             </p>
             <div className="space-y-2">
               {vendor.zones.map((zone) => (
                 <div
                   key={zone.name}
-                  className="flex items-center justify-between bg-white px-3 py-2.5 rounded-lg border border-[#D1D5DC]"
+                  className="flex items-center justify-between bg-white px-3 py-2.5 rounded-lg border border-ypark-black/10"
                 >
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-[#1565C0]" />
-                    <span className="text-[#1A2332] text-xs font-medium">{zone.name}</span>
+                    <MapPin className="w-3.5 h-3.5 text-ypark-deep-blue" />
+                    <span className="text-ypark-text text-xs font-medium">{zone.name}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[#506A84] text-xs">{parkingAreaTypeLabel[zone.type] || zone.type}</span>
+                    <span className="text-ypark-text-muted text-xs">{parkingAreaTypeLabel[zone.type] || zone.type}</span>
                     <span className={`text-xs font-bold ${zoneStatusConfig[zone.status]}`}>
                       {zone.status === 'PENDING_APPROVAL' ? 'Pending' : zone.status === 'APPROVED' ? 'Approved' : 'Rejected'}
                     </span>
@@ -305,11 +305,11 @@ const VendorDetailPanel = ({ vendor, onClose, onToggleStatus }) => {
 
           {/* Confirm Mode */}
           {confirmMode && (
-            <div className={`rounded-lg p-4 border ${isSuspended ? 'bg-[#2E7D32]/5 border-[#2E7D32]/20' : 'bg-[#C0392B]/5 border-[#C0392B]/20'}`}>
-              <p className={`text-xs font-bold mb-1 ${isSuspended ? 'text-[#2E7D32]' : 'text-[#C0392B]'}`}>
+            <div className={`rounded-lg p-4 border ${isSuspended ? 'bg-ypark-success/5 border-ypark-success/20' : 'bg-ypark-danger/5 border-ypark-danger/20'}`}>
+              <p className={`text-xs font-bold mb-1 ${isSuspended ? 'text-ypark-success' : 'text-ypark-danger'}`}>
                 {isSuspended ? 'Activate this vendor account?' : 'Suspend this vendor account?'}
               </p>
-              <p className={`text-xs ${isSuspended ? 'text-[#2E7D32]' : 'text-[#C0392B]'}`}>
+              <p className={`text-xs ${isSuspended ? 'text-ypark-success' : 'text-ypark-danger'}`}>
                 {isSuspended
                   ? 'Vendor will regain full access to the platform.'
                   : 'Vendor will lose access. Their parking areas will become inactive.'}
@@ -320,14 +320,14 @@ const VendorDetailPanel = ({ vendor, onClose, onToggleStatus }) => {
         </div>
 
         {/* Actions */}
-        <div className="px-5 py-4 border-t border-[#D1D5DC] bg-white space-y-2">
+        <div className="px-5 py-4 border-t border-ypark-black/10 bg-white space-y-2">
           {!confirmMode ? (
             <button
               onClick={() => setConfirmMode(true)}
               className={`w-full flex items-center justify-center gap-2 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors ${
                 isSuspended
-                  ? 'bg-[#2E7D32] hover:bg-[#1B5E20]'
-                  : 'bg-[#C0392B] hover:bg-[#922B21]'
+                  ? 'bg-ypark-success hover:bg-ypark-success/90'
+                  : 'bg-ypark-danger hover:bg-ypark-danger/90'
               }`}
             >
               {isSuspended ? <CircleCheck className="w-4 h-4" /> : <Ban className="w-4 h-4" />}
@@ -338,14 +338,14 @@ const VendorDetailPanel = ({ vendor, onClose, onToggleStatus }) => {
               <button
                 onClick={() => { onToggleStatus(vendor.id); setConfirmMode(false) }}
                 className={`flex-1 text-white text-sm font-semibold py-2.5 rounded-lg transition-colors ${
-                  isSuspended ? 'bg-[#2E7D32] hover:bg-[#1B5E20]' : 'bg-[#C0392B] hover:bg-[#922B21]'
+                  isSuspended ? 'bg-ypark-success hover:bg-ypark-success/90' : 'bg-ypark-danger hover:bg-ypark-danger/90'
                 }`}
               >
                 Confirm
               </button>
               <button
                 onClick={() => setConfirmMode(false)}
-                className="flex-1 bg-[#F0F4F8] hover:bg-[#D1D5DC] text-[#506A84] text-sm font-semibold py-2.5 rounded-lg transition-colors"
+                className="flex-1 bg-ypark-light-gray hover:bg-ypark-black/10 text-ypark-text-muted text-sm font-semibold py-2.5 rounded-lg transition-colors"
               >
                 Cancel
               </button>
@@ -408,19 +408,19 @@ const VendorManagement = () => {
       {/* Top */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-[#1A2332] font-bold text-sm">All Vendors</span>
-          <span className="bg-[#1565C0] text-white text-xs font-bold px-2 py-0.5 rounded-full">
+          <span className="text-ypark-text font-bold text-sm">All Vendors</span>
+          <span className="bg-ypark-deep-blue text-white text-xs font-bold px-2 py-0.5 rounded-full">
             {vendors.length} total
           </span>
         </div>
-        <span className="text-[#506A84] text-xs">{filtered.length} vendors found</span>
+        <span className="text-ypark-text-muted text-xs">{filtered.length} vendors found</span>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl border border-[#D1D5DC] p-4">
+      <div className="bg-white rounded-xl border border-ypark-black/10 p-4">
         <div className="flex items-center gap-3">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#AEAEAE]" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ypark-sidebar-muted" />
             <input
               type="text"
               placeholder="Search by name, phone, city, business name..."
@@ -429,7 +429,7 @@ const VendorManagement = () => {
                 setSearch(e.target.value)
                 resetPage()
               }}
-              className="w-full pl-9 pr-4 py-2 text-sm border border-[#D1D5DC] rounded-lg text-[#1A2332] placeholder:text-[#AEAEAE] focus:outline-none focus:border-[#1565C0] transition-colors"
+              className="w-full pl-9 pr-4 py-2 text-sm border border-ypark-black/10 rounded-lg text-ypark-text placeholder:text-ypark-sidebar-muted focus:outline-none focus:border-ypark-deep-blue transition-colors"
             />
           </div>
           <select
@@ -438,7 +438,7 @@ const VendorManagement = () => {
               setKycFilter(e.target.value)
               resetPage()
             }}
-            className="px-3 py-2 text-sm border border-[#D1D5DC] rounded-lg text-[#1A2332] focus:outline-none focus:border-[#1565C0] bg-white"
+            className="px-3 py-2 text-sm border border-ypark-black/10 rounded-lg text-ypark-text focus:outline-none focus:border-ypark-deep-blue bg-white"
           >
             <option value="ALL">All KYC</option>
             <option value="VERIFIED">Verified</option>
@@ -451,7 +451,7 @@ const VendorManagement = () => {
               setStatusFilter(e.target.value)
               resetPage()
             }}
-            className="px-3 py-2 text-sm border border-[#D1D5DC] rounded-lg text-[#1A2332] focus:outline-none focus:border-[#1565C0] bg-white"
+            className="px-3 py-2 text-sm border border-ypark-black/10 rounded-lg text-ypark-text focus:outline-none focus:border-ypark-deep-blue bg-white"
           >
             <option value="ALL">All Status</option>
             <option value="ACTIVE">Active</option>
@@ -461,23 +461,23 @@ const VendorManagement = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl border border-[#D1D5DC] overflow-hidden">
+      <div className="bg-white rounded-xl border border-ypark-black/10 overflow-hidden">
         <table className="w-full">
           <thead>
-            <tr className="bg-[#F0F4F8] border-b border-[#D1D5DC]">
-              <th className="text-left px-5 py-3 text-[#506A84] text-xs font-semibold uppercase tracking-wide">Vendor</th>
-              <th className="text-left px-4 py-3 text-[#506A84] text-xs font-semibold uppercase tracking-wide">Phone</th>
-              <th className="text-left px-4 py-3 text-[#506A84] text-xs font-semibold uppercase tracking-wide">City</th>
-              <th className="text-left px-4 py-3 text-[#506A84] text-xs font-semibold uppercase tracking-wide">Parking Areas</th>
-              <th className="text-left px-4 py-3 text-[#506A84] text-xs font-semibold uppercase tracking-wide">KYC</th>
-              <th className="text-left px-4 py-3 text-[#506A84] text-xs font-semibold uppercase tracking-wide">Status</th>
-              <th className="text-left px-4 py-3 text-[#506A84] text-xs font-semibold uppercase tracking-wide">Action</th>
+            <tr className="bg-ypark-light-gray border-b border-ypark-black/10">
+              <th className="text-left px-5 py-3 text-ypark-text-muted text-xs font-semibold uppercase tracking-wide">Vendor</th>
+              <th className="text-left px-4 py-3 text-ypark-text-muted text-xs font-semibold uppercase tracking-wide">Phone</th>
+              <th className="text-left px-4 py-3 text-ypark-text-muted text-xs font-semibold uppercase tracking-wide">City</th>
+              <th className="text-left px-4 py-3 text-ypark-text-muted text-xs font-semibold uppercase tracking-wide">Parking Areas</th>
+              <th className="text-left px-4 py-3 text-ypark-text-muted text-xs font-semibold uppercase tracking-wide">KYC</th>
+              <th className="text-left px-4 py-3 text-ypark-text-muted text-xs font-semibold uppercase tracking-wide">Status</th>
+              <th className="text-left px-4 py-3 text-ypark-text-muted text-xs font-semibold uppercase tracking-wide">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#F0F4F8]">
+          <tbody className="divide-y divide-ypark-light-gray">
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={7} className="text-center py-12 text-[#506A84] text-sm">
+                <td colSpan={7} className="text-center py-12 text-ypark-text-muted text-sm">
                   No vendors found matching your filters
                 </td>
               </tr>
@@ -489,37 +489,37 @@ const VendorManagement = () => {
                 return (
                   <tr
                     key={vendor.id}
-                    className="hover:bg-[#F0F4F8]/50 transition-colors cursor-pointer"
+                    className="hover:bg-ypark-light-gray/50 transition-colors cursor-pointer"
                     onClick={() => setSelectedVendor(vendor)}
                   >
                     <td className="px-5 py-3.5">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-[#1565C0] flex items-center justify-center text-white text-sm font-bold shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-ypark-deep-blue flex items-center justify-center text-white text-sm font-bold shrink-0">
                           {vendor.name.charAt(0)}
                         </div>
                         <div>
-                          <p className="text-[#1A2332] text-sm font-semibold leading-none">{vendor.name}</p>
-                          <p className="text-[#506A84] text-xs mt-0.5">{vendor.business_name}</p>
+                          <p className="text-ypark-text text-sm font-semibold leading-none">{vendor.name}</p>
+                          <p className="text-ypark-text-muted text-xs mt-0.5">{vendor.business_name}</p>
                         </div>
                       </div>
                     </td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center gap-1.5">
-                        <Phone className="w-3 h-3 text-[#506A84]" />
-                        <span className="text-[#1A2332] text-sm">{vendor.phone}</span>
+                        <Phone className="w-3 h-3 text-ypark-text-muted" />
+                        <span className="text-ypark-text text-sm">{vendor.phone}</span>
                       </div>
                     </td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center gap-1">
-                        <Navigation className="w-3 h-3 text-[#506A84]" />
-                        <span className="text-[#1A2332] text-sm">{vendor.city}</span>
+                        <Navigation className="w-3 h-3 text-ypark-text-muted" />
+                        <span className="text-ypark-text text-sm">{vendor.city}</span>
                       </div>
                     </td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center gap-1.5">
-                        <MapPin className="w-3.5 h-3.5 text-[#1565C0]" />
-                        <span className="text-[#1A2332] text-sm font-semibold">{vendor.zones_count}</span>
-                        <span className="text-[#506A84] text-xs">parking areas</span>
+                        <MapPin className="w-3.5 h-3.5 text-ypark-deep-blue" />
+                        <span className="text-ypark-text text-sm font-semibold">{vendor.zones_count}</span>
+                        <span className="text-ypark-text-muted text-xs">parking areas</span>
                       </div>
                     </td>
                     <td className="px-4 py-3.5">
@@ -536,7 +536,7 @@ const VendorManagement = () => {
                     <td className="px-4 py-3.5">
                       <button
                         onClick={(e) => { e.stopPropagation(); setSelectedVendor(vendor) }}
-                        className="flex items-center gap-1 text-[#1565C0] text-xs font-semibold hover:underline"
+                        className="flex items-center gap-1 text-ypark-deep-blue text-xs font-semibold hover:underline"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         View
@@ -549,7 +549,7 @@ const VendorManagement = () => {
           </tbody>
         </table>
 
-        <div className="px-5 py-3 border-t border-[#D1D5DC]">
+        <div className="px-5 py-3 border-t border-ypark-black/10">
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

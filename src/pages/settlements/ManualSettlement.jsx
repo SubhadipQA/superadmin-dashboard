@@ -112,12 +112,12 @@ const mockDailySettlements = [
 
 // ─── Summary Card ──────────────────────────────────────────
 const SummaryCard = ({ label, value, icon: Icon, color, sub }) => (
-  <div className="bg-white rounded-xl p-4 border border-[#D1D5DC]">
+  <div className="bg-white rounded-xl p-4 border border-ypark-black/10">
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-[#506A84] text-xs font-medium">{label}</p>
-        <p className="text-[#1A2332] text-xl font-bold mt-1">{value}</p>
-        {sub && <p className="text-[#506A84] text-xs mt-0.5">{sub}</p>}
+        <p className="text-ypark-text-muted text-xs font-medium">{label}</p>
+        <p className="text-ypark-text text-xl font-bold mt-1">{value}</p>
+        {sub && <p className="text-ypark-text-muted text-xs mt-0.5">{sub}</p>}
       </div>
       <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${color}`}>
         <Icon className="w-4 h-4 text-white" />
@@ -131,9 +131,9 @@ const AmountRow = ({ label, value, highlight, dimmed, icon: Icon, iconColor }) =
   <div className={`flex items-center justify-between py-2 ${dimmed ? 'opacity-60' : ''}`}>
     <div className="flex items-center gap-2">
       {Icon && <Icon className={`w-3.5 h-3.5 ${iconColor}`} />}
-      <span className="text-[#506A84] text-xs">{label}</span>
+      <span className="text-ypark-text-muted text-xs">{label}</span>
     </div>
-    <span className={`text-xs font-bold ${highlight || 'text-[#1A2332]'}`}>
+    <span className={`text-xs font-bold ${highlight || 'text-ypark-text'}`}>
       {value}
     </span>
   </div>
@@ -146,40 +146,40 @@ const ZoneSettlementCard = ({ zone, onSettle }) => {
   const hasCarryForward = zone.carry_forward_amount > 0
 
   return (
-    <div className={`bg-white rounded-xl border ${isSettled ? 'border-[#2E7D32]/30' : 'border-[#D1D5DC]'} overflow-hidden`}>
+    <div className={`bg-white rounded-xl border ${isSettled ? 'border-ypark-success/30' : 'border-ypark-black/10'} overflow-hidden`}>
 
       {/* Card Header */}
-      <div className={`px-5 py-4 flex items-start justify-between ${isSettled ? 'bg-[#2E7D32]/5' : 'bg-[#F0F4F8]'} border-b border-[#D1D5DC]`}>
+      <div className={`px-5 py-4 flex items-start justify-between ${isSettled ? 'bg-ypark-success/5' : 'bg-ypark-light-gray'} border-b border-ypark-black/10`}>
         <div className="flex items-start gap-3">
-          <div className="w-9 h-9 rounded-lg bg-[#1565C0]/10 flex items-center justify-center shrink-0">
-            <MapPin className="w-4 h-4 text-[#1565C0]" />
+          <div className="w-9 h-9 rounded-lg bg-ypark-deep-blue/10 flex items-center justify-center shrink-0">
+            <MapPin className="w-4 h-4 text-ypark-deep-blue" />
           </div>
           <div>
-            <h3 className="text-[#1A2332] font-bold text-sm">{zone.zone_name}</h3>
+            <h3 className="text-ypark-text font-bold text-sm">{zone.zone_name}</h3>
             <div className="flex items-center gap-2 mt-0.5">
-              <User className="w-3 h-3 text-[#506A84]" />
-              <span className="text-[#506A84] text-xs">{zone.owner_name}</span>
-              <span className="text-[#506A84] text-xs">·</span>
-              <span className="text-[#506A84] text-xs">{zone.city}</span>
+              <User className="w-3 h-3 text-ypark-text-muted" />
+              <span className="text-ypark-text-muted text-xs">{zone.owner_name}</span>
+              <span className="text-ypark-text-muted text-xs">·</span>
+              <span className="text-ypark-text-muted text-xs">{zone.city}</span>
             </div>
             <div className="flex items-center gap-3 mt-1">
-              <span className="text-[#506A84] text-xs">{zone.total_sessions} parking visits</span>
+              <span className="text-ypark-text-muted text-xs">{zone.total_sessions} parking visits</span>
               {zone.subscription_users > 0 && (
-                <span className="text-[#7B1FA2] text-xs">{zone.subscription_users} pass holders</span>
+                <span className="text-purple-600 text-xs">{zone.subscription_users} pass holders</span>
               )}
             </div>
           </div>
         </div>
         {isSettled ? (
           <div className="flex flex-col items-end gap-1">
-            <span className="bg-[#2E7D32]/10 text-[#2E7D32] border border-[#2E7D32]/20 text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+            <span className="bg-ypark-success/10 text-ypark-success border border-ypark-success/20 text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
               <CheckCircle className="w-3 h-3" />
               Settled
             </span>
-            <span className="text-[#506A84] text-xs">{zone.settled_at}</span>
+            <span className="text-ypark-text-muted text-xs">{zone.settled_at}</span>
           </div>
         ) : (
-          <span className="bg-[#F57F17]/10 text-[#F57F17] border border-[#F57F17]/20 text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+          <span className="bg-ypark-warning/10 text-ypark-warning border border-ypark-warning/20 text-xs px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
             <Clock className="w-3 h-3" />
             Pending
           </span>
@@ -192,28 +192,28 @@ const ZoneSettlementCard = ({ zone, onSettle }) => {
 
           {/* Left — Collections */}
           <div>
-            <p className="text-[#1A2332] font-bold text-xs uppercase tracking-wide mb-2">
+            <p className="text-ypark-text font-bold text-xs uppercase tracking-wide mb-2">
               Collections
             </p>
-            <div className="divide-y divide-[#F0F4F8]">
+            <div className="divide-y divide-ypark-light-gray">
               <AmountRow
                 label="UPI Collected"
                 value={`₹${zone.upi_amount.toLocaleString()}`}
                 icon={Smartphone}
-                iconColor="text-[#1565C0]"
+                iconColor="text-ypark-deep-blue"
               />
               <AmountRow
                 label="Cash Collected"
                 value={`₹${zone.cash_amount.toLocaleString()}`}
                 icon={Banknote}
-                iconColor="text-[#2E7D32]"
+                iconColor="text-ypark-success"
               />
               {zone.online_amount > 0 && (
                 <AmountRow
                   label="Online Collected"
                   value={`₹${zone.online_amount.toLocaleString()}`}
                   icon={Globe}
-                  iconColor="text-[#00BCD4]"
+                  iconColor="text-ypark-info"
                 />
               )}
               {zone.subscription_amount > 0 && (
@@ -221,12 +221,12 @@ const ZoneSettlementCard = ({ zone, onSettle }) => {
                   label="Monthly Pass"
                   value={`₹${zone.subscription_amount.toLocaleString()}`}
                   icon={Calendar}
-                  iconColor="text-[#7B1FA2]"
+                  iconColor="text-purple-600"
                 />
               )}
               <div className="flex items-center justify-between py-2 mt-1">
-                <span className="text-[#1A2332] text-xs font-bold">Total Gross</span>
-                <span className="text-[#1A2332] text-sm font-bold">
+                <span className="text-ypark-text text-xs font-bold">Total Gross</span>
+                <span className="text-ypark-text text-sm font-bold">
                   ₹{zone.total_gross.toLocaleString()}
                 </span>
               </div>
@@ -235,54 +235,54 @@ const ZoneSettlementCard = ({ zone, onSettle }) => {
 
           {/* Right — Payment Summary Breakdown */}
           <div>
-            <p className="text-[#1A2332] font-bold text-xs uppercase tracking-wide mb-2">
+            <p className="text-ypark-text font-bold text-xs uppercase tracking-wide mb-2">
               Payment Summary
             </p>
-            <div className="divide-y divide-[#F0F4F8]">
+            <div className="divide-y divide-ypark-light-gray">
               <AmountRow
                 label="UPI Service Charge (yours)"
                 value={`- ₹${zone.upi_commission.toLocaleString()}`}
-                highlight="text-[#C0392B]"
+                highlight="text-ypark-danger"
               />
               <AmountRow
                 label="Cash Service Charge"
                 value={`₹${zone.cash_commission.toLocaleString()}`}
-                highlight="text-[#F57F17]"
+                highlight="text-ypark-warning"
               />
               <AmountRow
                 label="Cash Service Charge Status"
                 value="Carry Forward →"
-                highlight="text-[#F57F17]"
+                highlight="text-ypark-warning"
                 dimmed
               />
               {hasCarryForward && (
                 <AmountRow
                   label="Yesterday Carry Forward"
                   value={`- ₹${zone.carry_forward_amount.toLocaleString()}`}
-                  highlight="text-[#C0392B]"
+                  highlight="text-ypark-danger"
                 />
               )}
             </div>
 
             {/* Final Payable */}
-            <div className="mt-3 bg-[#1565C0]/5 border border-[#1565C0]/20 rounded-lg px-3 py-2.5">
+            <div className="mt-3 bg-ypark-deep-blue/5 border border-ypark-deep-blue/20 rounded-lg px-3 py-2.5">
               <div className="flex items-center justify-between">
-                <span className="text-[#1565C0] text-xs font-bold">Transfer To Vendor</span>
-                <span className="text-[#1565C0] text-base font-bold">
+                <span className="text-ypark-deep-blue text-xs font-bold">Transfer To Vendor</span>
+                <span className="text-ypark-deep-blue text-base font-bold">
                   ₹{zone.vendor_payable.toLocaleString()}
                 </span>
               </div>
-              <p className="text-[#506A84] text-xs mt-0.5">
+              <p className="text-ypark-text-muted text-xs mt-0.5">
                 UPI + Online minus service charge
                 {hasCarryForward && ` and ₹${zone.carry_forward_amount} carry forward`}
               </p>
             </div>
 
             {/* Cash Note */}
-            <div className="mt-2 bg-[#F57F17]/5 border border-[#F57F17]/20 rounded-lg px-3 py-2">
+            <div className="mt-2 bg-ypark-warning/5 border border-ypark-warning/20 rounded-lg px-3 py-2">
               <div className="flex items-start gap-1.5">
-                <AlertCircle className="w-3.5 h-3.5 text-[#F57F17] shrink-0 mt-0.5" />
-                <p className="text-[#F57F17] text-xs">
+                <AlertCircle className="w-3.5 h-3.5 text-ypark-warning shrink-0 mt-0.5" />
+                <p className="text-ypark-warning text-xs">
                   ₹{zone.cash_commission.toLocaleString()} cash service charge will carry forward to tomorrow's payment summary
                 </p>
               </div>
@@ -293,20 +293,20 @@ const ZoneSettlementCard = ({ zone, onSettle }) => {
 
       {/* Card Footer — Action */}
       {!isSettled && (
-        <div className="px-5 py-4 border-t border-[#D1D5DC] bg-white">
+        <div className="px-5 py-4 border-t border-ypark-black/10 bg-white">
           {!confirming ? (
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-[#506A84] text-xs">
-                  Transfer <span className="text-[#1565C0] font-bold">₹{zone.vendor_payable.toLocaleString()}</span> to {zone.owner_name} then mark settled
+                <p className="text-ypark-text-muted text-xs">
+                  Transfer <span className="text-ypark-deep-blue font-bold">₹{zone.vendor_payable.toLocaleString()}</span> to {zone.owner_name} then mark settled
                 </p>
-                <p className="text-[#506A84] text-xs mt-0.5">
+                <p className="text-ypark-text-muted text-xs mt-0.5">
                   Phone: {zone.owner_phone}
                 </p>
               </div>
               <button
                 onClick={() => setConfirming(true)}
-                className="flex items-center gap-2 bg-[#2E7D32] hover:bg-[#1B5E20] text-white text-xs font-bold px-5 py-2.5 rounded-lg transition-colors shrink-0"
+                className="flex items-center gap-2 bg-ypark-success hover:bg-ypark-success/90 text-white text-xs font-bold px-5 py-2.5 rounded-lg transition-colors shrink-0"
               >
                 <CheckCircle className="w-3.5 h-3.5" />
                 Mark as Settled
@@ -314,19 +314,19 @@ const ZoneSettlementCard = ({ zone, onSettle }) => {
             </div>
           ) : (
             <div className="flex items-center justify-between gap-3">
-              <p className="text-[#1A2332] text-xs font-semibold">
+              <p className="text-ypark-text text-xs font-semibold">
                 Confirm ₹{zone.vendor_payable.toLocaleString()} transferred to {zone.owner_name}?
               </p>
               <div className="flex items-center gap-2 shrink-0">
                 <button
                   onClick={() => onSettle(zone.zone_id)}
-                  className="bg-[#2E7D32] hover:bg-[#1B5E20] text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors"
+                  className="bg-ypark-success hover:bg-ypark-success/90 text-white text-xs font-bold px-4 py-2 rounded-lg transition-colors"
                 >
                   Yes, Confirmed
                 </button>
                 <button
                   onClick={() => setConfirming(false)}
-                  className="bg-[#F0F4F8] hover:bg-[#D1D5DC] text-[#506A84] text-xs font-bold px-4 py-2 rounded-lg transition-colors"
+                  className="bg-ypark-light-gray hover:bg-ypark-black/10 text-ypark-text-muted text-xs font-bold px-4 py-2 rounded-lg transition-colors"
                 >
                   Cancel
                 </button>
@@ -433,12 +433,12 @@ const ManualSettlement = () => {
             type="date"
             value={selectedDate}
             onChange={(e) => { setSelectedDate(e.target.value); resetPage() }}
-            className="px-3 py-2 text-sm border border-[#D1D5DC] rounded-lg text-[#1A2332] focus:outline-none focus:border-[#1565C0] bg-white"
+            className="px-3 py-2 text-sm border border-ypark-black/10 rounded-lg text-ypark-text focus:outline-none focus:border-ypark-deep-blue bg-white"
           />
           <select
             value={statusFilter}
             onChange={(e) => { setStatusFilter(e.target.value); resetPage() }}
-            className="px-3 py-2 text-sm border border-[#D1D5DC] rounded-lg text-[#1A2332] focus:outline-none focus:border-[#1565C0] bg-white"
+            className="px-3 py-2 text-sm border border-ypark-black/10 rounded-lg text-ypark-text focus:outline-none focus:border-ypark-deep-blue bg-white"
           >
             <option value="ALL">All Parking Areas</option>
             <option value="PENDING">Pending Only</option>
@@ -447,7 +447,7 @@ const ManualSettlement = () => {
         </div>
         <button
           onClick={handleExport}
-          className="flex items-center gap-2 bg-[#1565C0] hover:bg-[#0D47A1] text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
+          className="flex items-center gap-2 bg-ypark-deep-blue hover:bg-ypark-deep-blue/90 text-white text-xs font-semibold px-4 py-2 rounded-lg transition-colors"
         >
           <Download className="w-3.5 h-3.5" />
           Export Excel
@@ -460,28 +460,28 @@ const ManualSettlement = () => {
           label="Total Gross Today"
           value={`₹${totalGrossToday.toLocaleString()}`}
           icon={Wallet}
-          color="bg-[#1565C0]"
+          color="bg-ypark-deep-blue"
           sub={`${totalSessionsToday} total parking visits`}
         />
         <SummaryCard
           label="YPark Commission"
           value={`₹${totalCommissionToday.toLocaleString()}`}
           icon={TrendingUp}
-          color="bg-[#2E7D32]"
+          color="bg-ypark-success"
           sub="YPark earnings today"
         />
         <SummaryCard
           label="Pending Transfer"
           value={`₹${totalPendingAmount.toLocaleString()}`}
           icon={Clock}
-          color="bg-[#F57F17]"
+          color="bg-ypark-warning"
           sub={`${pending.length} parking areas pending`}
         />
         <SummaryCard
           label="Parking Areas Settled"
           value={`${settlements.filter((s) => s.settlement_status === 'SETTLED').length} / ${settlements.length}`}
           icon={CheckCircle}
-          color="bg-[#00BCD4]"
+          color="bg-ypark-info"
           sub="Completed today"
         />
       </div>
@@ -498,7 +498,7 @@ const ManualSettlement = () => {
       </div>
 
       {/* Pagination */}
-      <div className="bg-white rounded-xl border border-[#D1D5DC] px-5 py-3">
+      <div className="bg-white rounded-xl border border-ypark-black/10 px-5 py-3">
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}

@@ -25,7 +25,7 @@ const stats = [
     change: '+12.5% from last month',
     positive: true,
     icon: IndianRupee,
-    color: 'bg-[#1565C0]',
+    color: 'bg-ypark-deep-blue',
   },
   {
     label: 'Active Parking Areas',
@@ -33,7 +33,7 @@ const stats = [
     change: '+3 approved this week',
     positive: true,
     icon: MapPin,
-    color: 'bg-[#2E7D32]',
+    color: 'bg-ypark-success',
   },
   {
     label: 'Parking Visits Today',
@@ -41,7 +41,7 @@ const stats = [
     change: '+8.2% from yesterday',
     positive: true,
     icon: Activity,
-    color: 'bg-[#00BCD4]',
+    color: 'bg-ypark-info',
   },
   {
     label: 'New Vendors',
@@ -49,7 +49,7 @@ const stats = [
     change: 'Registered this week',
     positive: true,
     icon: Users,
-    color: 'bg-[#F57F17]',
+    color: 'bg-ypark-warning',
   },
 ]
 
@@ -118,15 +118,15 @@ const last7DaysRevenue = [
 const statusConfig = {
   PENDING_APPROVAL: {
     label: 'Pending',
-    className: 'bg-[#F57F17]/10 text-[#F57F17] border border-[#F57F17]/20',
+    className: 'bg-ypark-warning/10 text-ypark-warning border border-ypark-warning/20',
   },
   APPROVED: {
     label: 'Approved',
-    className: 'bg-[#2E7D32]/10 text-[#2E7D32] border border-[#2E7D32]/20',
+    className: 'bg-ypark-success/10 text-ypark-success border border-ypark-success/20',
   },
   REJECTED: {
     label: 'Rejected',
-    className: 'bg-[#C0392B]/10 text-[#C0392B] border border-[#C0392B]/20',
+    className: 'bg-ypark-danger/10 text-ypark-danger border border-ypark-danger/20',
   },
 }
 
@@ -134,33 +134,33 @@ const getZoneTypeBadge = (zone_type, has_marked_slots) => {
   if (zone_type === 'ON_ROAD') {
     return {
       label: 'Govt. Authorized',
-      className: 'bg-[#1565C0]/10 text-[#1565C0] border border-[#1565C0]/20',
+      className: 'bg-ypark-deep-blue/10 text-ypark-deep-blue border border-ypark-deep-blue/20',
     }
   }
   if (zone_type === 'OFF_ROAD' && !has_marked_slots) {
     return {
       label: 'Private · No Parking Spaces',
-      className: 'bg-[#F57F17]/10 text-[#F57F17] border border-[#F57F17]/20',
+      className: 'bg-ypark-warning/10 text-ypark-warning border border-ypark-warning/20',
     }
   }
   return {
     label: 'Private · With Parking Spaces',
-    className: 'bg-[#2E7D32]/10 text-[#2E7D32] border border-[#2E7D32]/20',
+    className: 'bg-ypark-success/10 text-ypark-success border border-ypark-success/20',
   }
 }
 
 // ─── Components ───────────────────────────────────────────
 const StatCard = ({ label, value, change, positive, icon: Icon, color }) => (
-  <div className="bg-white rounded-xl p-5 border border-[#D1D5DC] flex items-start gap-4">
+  <div className="bg-white rounded-xl p-5 border border-ypark-black/10 flex items-start gap-4">
     <div className={`${color} w-11 h-11 rounded-lg flex items-center justify-center shrink-0`}>
       <Icon className="w-5 h-5 text-white" />
     </div>
     <div className="flex-1 min-w-0">
-      <p className="text-[#506A84] text-xs font-medium">{label}</p>
-      <p className="text-[#1A2332] text-2xl font-bold mt-0.5">{value}</p>
+      <p className="text-ypark-text-muted text-xs font-medium">{label}</p>
+      <p className="text-ypark-text text-2xl font-bold mt-0.5">{value}</p>
       <div className="flex items-center gap-1 mt-1">
-        <TrendingUp className={`w-3 h-3 ${positive ? 'text-[#2E7D32]' : 'text-[#C0392B]'}`} />
-        <p className={`text-xs ${positive ? 'text-[#2E7D32]' : 'text-[#C0392B]'}`}>{change}</p>
+        <TrendingUp className={`w-3 h-3 ${positive ? 'text-ypark-success' : 'text-ypark-danger'}`} />
+        <p className={`text-xs ${positive ? 'text-ypark-success' : 'text-ypark-danger'}`}>{change}</p>
       </div>
     </div>
   </div>
@@ -179,27 +179,27 @@ const DashboardHome = () => {
       </div>
 
       {/* Revenue Last 7 Days */}
-      <div className="bg-white rounded-xl border border-[#D1D5DC] p-5">
+      <div className="bg-white rounded-xl border border-ypark-black/10 p-5">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-[#1A2332] font-bold text-sm">Revenue — Last 7 Days</h2>
-            <p className="text-[#506A84] text-xs mt-0.5">
+            <h2 className="text-ypark-text font-bold text-sm">Revenue — Last 7 Days</h2>
+            <p className="text-ypark-text-muted text-xs mt-0.5">
               Daily breakdown by payment method
             </p>
           </div>
           <div className="flex items-center gap-3">
             {[
-              { label: 'UPI', color: '#1565C0' },
-              { label: 'Cash', color: '#2E7D32' },
-              { label: 'Online', color: '#00BCD4' },
-              { label: 'Monthly Pass', color: '#7B1FA2' },
+              { label: 'UPI', color: '#0B05C7' },
+              { label: 'Cash', color: '#16A34A' },
+              { label: 'Online', color: '#0891B2' },
+              { label: 'Monthly Pass', color: '#7C3AED' },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-1.5">
                 <div
                   className="w-2.5 h-2.5 rounded-sm"
                   style={{ background: item.color }}
                 />
-                <span className="text-[#506A84] text-xs">{item.label}</span>
+                <span className="text-ypark-text-muted text-xs">{item.label}</span>
               </div>
             ))}
           </div>
@@ -242,25 +242,25 @@ const DashboardHome = () => {
             <Bar
               dataKey="upi"
               stackId="a"
-              fill="#1565C0"
+              fill="#0B05C7"
               name="UPI"
             />
             <Bar
               dataKey="cash"
               stackId="a"
-              fill="#2E7D32"
+              fill="#16A34A"
               name="Cash"
             />
             <Bar
               dataKey="online"
               stackId="a"
-              fill="#00BCD4"
+              fill="#0891B2"
               name="Online"
             />
             <Bar
               dataKey="subscription"
               stackId="a"
-              fill="#7B1FA2"
+              fill="#7C3AED"
                 name="Monthly Pass"
               radius={[4, 4, 0, 0]}
             />
@@ -272,27 +272,27 @@ const DashboardHome = () => {
       <div className="grid grid-cols-3 gap-4">
 
         {/* Recent Parking Area Submissions */}
-        <div className="col-span-2 bg-white rounded-xl border border-[#D1D5DC]">
-          <div className="flex items-center justify-between px-5 py-4 border-b border-[#D1D5DC]">
+        <div className="col-span-2 bg-white rounded-xl border border-ypark-black/10">
+          <div className="flex items-center justify-between px-5 py-4 border-b border-ypark-black/10">
             <div>
-              <h2 className="text-[#1A2332] font-bold text-sm">Recent Parking Area Submissions</h2>
-              <p className="text-[#506A84] text-xs mt-0.5">Latest parking areas waiting for your review</p>
+              <h2 className="text-ypark-text font-bold text-sm">Recent Parking Area Submissions</h2>
+              <p className="text-ypark-text-muted text-xs mt-0.5">Latest parking areas waiting for your review</p>
             </div>
-            <button className="text-[#1565C0] text-xs font-semibold hover:underline">
+            <button className="text-ypark-deep-blue text-xs font-semibold hover:underline">
               View All
             </button>
           </div>
-          <div className="divide-y divide-[#D1D5DC]">
+          <div className="divide-y divide-ypark-black/10">
             {recentZones.map((zone) => {
               const status = statusConfig[zone.status]
               return (
                 <div key={zone.id} className="px-5 py-3.5 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#F0F4F8] flex items-center justify-center shrink-0">
-                    <MapPin className="w-4 h-4 text-[#1565C0]" />
+                  <div className="w-8 h-8 rounded-lg bg-ypark-light-gray flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4 text-ypark-deep-blue" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-[#1A2332] text-sm font-semibold truncate">{zone.name}</p>
-                    <p className="text-[#506A84] text-xs">{zone.owner} · {zone.city}</p>
+                    <p className="text-ypark-text text-sm font-semibold truncate">{zone.name}</p>
+                    <p className="text-ypark-text-muted text-xs">{zone.owner} · {zone.city}</p>
                   </div>
                   <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${getZoneTypeBadge(zone.zone_type, zone.has_marked_slots).className}`}>
                     {getZoneTypeBadge(zone.zone_type, zone.has_marked_slots).label}
@@ -300,7 +300,7 @@ const DashboardHome = () => {
                   <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${status.className}`}>
                     {status.label}
                   </span>
-                  <div className="flex items-center gap-1 text-[#506A84]">
+                  <div className="flex items-center gap-1 text-ypark-text-muted">
                     <Clock className="w-3 h-3" />
                     <span className="text-xs">{zone.submitted}</span>
                   </div>
@@ -311,22 +311,22 @@ const DashboardHome = () => {
         </div>
 
         {/* Top Performing Parking Areas */}
-        <div className="bg-white rounded-xl border border-[#D1D5DC]">
-          <div className="px-5 py-4 border-b border-[#D1D5DC]">
-            <h2 className="text-[#1A2332] font-bold text-sm">Top Performing Parking Areas</h2>
-            <p className="text-[#506A84] text-xs mt-0.5">By revenue this month</p>
+        <div className="bg-white rounded-xl border border-ypark-black/10">
+          <div className="px-5 py-4 border-b border-ypark-black/10">
+            <h2 className="text-ypark-text font-bold text-sm">Top Performing Parking Areas</h2>
+            <p className="text-ypark-text-muted text-xs mt-0.5">By revenue this month</p>
           </div>
-          <div className="divide-y divide-[#D1D5DC]">
+          <div className="divide-y divide-ypark-black/10">
             {topZones.map((zone, index) => (
               <div key={zone.name} className="px-5 py-3.5 flex items-center gap-3">
-                <span className="text-[#506A84] text-xs font-bold w-4 shrink-0">
+                <span className="text-ypark-text-muted text-xs font-bold w-4 shrink-0">
                   {index + 1}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[#1A2332] text-xs font-semibold truncate">{zone.name}</p>
-                  <p className="text-[#506A84] text-xs">{zone.city} · {zone.sessions} parking visits</p>
+                  <p className="text-ypark-text text-xs font-semibold truncate">{zone.name}</p>
+                  <p className="text-ypark-text-muted text-xs">{zone.city} · {zone.sessions} parking visits</p>
                 </div>
-                <p className="text-[#1565C0] text-xs font-bold shrink-0">{zone.revenue}</p>
+                <p className="text-ypark-deep-blue text-xs font-bold shrink-0">{zone.revenue}</p>
               </div>
             ))}
           </div>

@@ -3,8 +3,8 @@
 Internal Super Admin tool for managing the YPark smart parking platform.
 Built with React + Vite. Connects to YPark Express API backend.
 
-**Version:** 1.0 — Phase 1  
-**Last Updated:** April 2026  
+**Version:** 1.1 — Phase 1  
+**Last Updated:** July 2026  
 **Status:** Phase 1 Complete — Mock Data. API connection in progress.
 
 ---
@@ -65,8 +65,8 @@ CUSTOMER     → mobile app only
 
 | Library | Version | Purpose |
 |---------|---------|---------|
-| React | 18 | Frontend framework |
-| Vite | 5 | Build tool and dev server |
+| React | 19 | Frontend framework |
+| Vite | 8 | Build tool and dev server |
 | React Router | v6 | Client side routing |
 | Tailwind CSS | v3 | Utility first styling |
 | shadcn/ui | latest | Headless UI components |
@@ -224,32 +224,63 @@ See `FRONTEND_GUIDE.md` Section 5 for exact implementation.
 
 ## 9. Color System
 
-Colors defined as CSS variables in `src/index.css`.
-Mapped to Tailwind utilities via `tailwind.config.js`.
+All colors are centralized in `tailwind.config.js` using the `ypark-*` prefix.
+Use Tailwind classes like `bg-ypark-black`, `text-ypark-deep-blue`, etc.
 
-**Primary palette:**
+**Brand Colors:**
 ```
-Dark Background    #0D1B2A   → Sidebar, login page
-Dark Card          #132236   → Sidebar cards
-Primary Blue       #1565C0   → Buttons, active nav, links
-Accent Cyan        #00BCD4   → Accent badges
-Light Background   #F0F4F8   → Page background
-Card White         #FFFFFF   → Cards and panels
-Border             #D1D5DC   → All borders
-Text Heading       #1A2332   → All headings
-Text Subtext       #506A84   → Labels, secondary text
+ypark-black        #0E0E0E   → Sidebar background
+ypark-deep-blue    #0B05C7   → Primary brand, CTAs, active states
+ypark-bright-blue  #0063FF   → Accent highlights
+ypark-light-gray   #F4F4F4   → Table headers, secondary backgrounds
 ```
 
-**Semantic colors:**
+**Text Colors:**
 ```
-Success   #2E7D32   → Approved, active, verified
-Warning   #F57F17   → Pending, carry forward
-Danger    #C0392B   → Rejected, suspended, error
-Purple    #7B1FA2   → Monthly pass only
+ypark-text         #1A2332   → Main headings and body text
+ypark-text-muted   #506A84   → Secondary text, labels, placeholders
 ```
 
-**Rule:** Never use raw hex colors in new components.
-Always use the existing values from this palette for consistency.
+**Sidebar Colors:**
+```
+ypark-sidebar          #0E0E0E   → Sidebar background
+ypark-sidebar-hover    #1A1A1A   → Hover state
+ypark-sidebar-border   #2A2A2A   → Dividers
+ypark-sidebar-muted    #8A8A8A   → Inactive icons/text
+```
+
+**Semantic Colors:**
+```
+ypark-success   #16A34A   → Approved, active, verified
+ypark-warning   #F59E0B   → Pending, carry forward
+ypark-danger    #DC2626   → Rejected, suspended, error
+ypark-info      #0891B2   → Information badges
+```
+
+**Typography:**
+- Headings: Plus Jakarta Sans (font-heading)
+- Body: Geist (font-sans)
+
+**Usage Examples:**
+```jsx
+// Background
+<div className="bg-ypark-black">         // Sidebar
+<div className="bg-ypark-light-gray">    // Table header
+
+// Text
+<h1 className="text-ypark-text">         // Heading
+<p className="text-ypark-text-muted">    // Secondary
+
+// Borders
+<div className="border border-ypark-black/10">  // Subtle border
+
+// Buttons
+<button className="bg-ypark-deep-blue hover:bg-ypark-deep-blue/90">
+<button className="bg-ypark-success hover:bg-ypark-success/90">
+```
+
+**Rule:** Never use raw hex colors in components.
+Always use `ypark-*` Tailwind classes for consistency.
 
 ---
 
@@ -402,5 +433,5 @@ Phase 3
 
 ---
 
-*YPark Admin Panel — README.md | Version 1.0 | Phase 1 | April 2026*  
+*YPark Admin Panel — README.md | Version 1.1 | Phase 1 | July 2026*  
 *Update version number and phase status when significant changes are made.*

@@ -45,9 +45,9 @@ const topZones = [
 ]
 
 const vehicleDistribution = [
-  { name: 'Two Wheeler', value: 54, color: '#1565C0' },
-  { name: 'Four Wheeler', value: 38, color: '#00BCD4' },
-  { name: 'Heavy', value: 8, color: '#F57F17' },
+  { name: 'Two Wheeler', value: 54, color: '#0B05C7' },
+  { name: 'Four Wheeler', value: 38, color: '#0891B2' },
+  { name: 'Heavy', value: 8, color: '#F59E0B' },
 ]
 
 const cityBreakdown = [
@@ -108,15 +108,15 @@ const DATE_FILTERS = [
 ]
 
 const StatCard = ({ label, value, icon: Icon, color, sub }) => (
-  <div className="bg-white rounded-xl p-4 border border-[#D1D5DC]">
+  <div className="bg-white rounded-xl p-4 border border-ypark-black/10">
     <div className="flex items-start justify-between">
       <div className="flex-1 min-w-0">
-        <p className="text-[#506A84] text-xs font-medium">{label}</p>
-        <p className="text-[#1A2332] text-xl font-bold mt-1">{value}</p>
+        <p className="text-ypark-text-muted text-xs font-medium">{label}</p>
+        <p className="text-ypark-text text-xl font-bold mt-1">{value}</p>
         {sub && (
           <div className="flex items-center gap-1 mt-1">
-            <TrendingUp className="w-3 h-3 text-[#2E7D32]" />
-            <p className="text-[#2E7D32] text-xs">{sub}</p>
+            <TrendingUp className="w-3 h-3 text-ypark-success" />
+            <p className="text-ypark-success text-xs">{sub}</p>
           </div>
         )}
       </div>
@@ -131,13 +131,13 @@ const StatCard = ({ label, value, icon: Icon, color, sub }) => (
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white border border-[#D1D5DC] rounded-lg p-3 shadow-lg">
-        <p className="text-[#1A2332] text-xs font-bold mb-2">{label}</p>
+      <div className="bg-white border border-ypark-black/10 rounded-lg p-3 shadow-lg">
+        <p className="text-ypark-text text-xs font-bold mb-2">{label}</p>
         {payload.map((entry) => (
           <div key={entry.name} className="flex items-center gap-2 py-0.5">
             <div className="w-2 h-2 rounded-full" style={{ background: entry.color }} />
-            <span className="text-[#506A84] text-xs capitalize">{entry.name}:</span>
-            <span className="text-[#1A2332] text-xs font-semibold">
+            <span className="text-ypark-text-muted text-xs capitalize">{entry.name}:</span>
+            <span className="text-ypark-text text-xs font-semibold">
               ₹{entry.value.toLocaleString()}
             </span>
           </div>
@@ -151,9 +151,9 @@ const CustomTooltip = ({ active, payload, label }) => {
 const PieTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white border border-[#D1D5DC] rounded-lg p-3 shadow-lg">
-        <p className="text-[#1A2332] text-xs font-bold">{payload[0].name}</p>
-        <p className="text-[#506A84] text-xs">{payload[0].value}% of parking visits</p>
+      <div className="bg-white border border-ypark-black/10 rounded-lg p-3 shadow-lg">
+        <p className="text-ypark-text text-xs font-bold">{payload[0].name}</p>
+        <p className="text-ypark-text-muted text-xs">{payload[0].value}% of parking visits</p>
       </div>
     )
   }
@@ -190,8 +190,8 @@ const PlatformAnalytics = () => {
               onClick={() => setDateFilter(f.value)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                 dateFilter === f.value
-                  ? 'bg-[#1565C0] text-white'
-                  : 'bg-white border border-[#D1D5DC] text-[#506A84] hover:bg-[#F0F4F8]'
+                  ? 'bg-ypark-deep-blue text-white'
+                  : 'bg-white border border-ypark-black/10 text-ypark-text-muted hover:bg-ypark-light-gray'
               }`}
             >
               {f.label}
@@ -201,23 +201,23 @@ const PlatformAnalytics = () => {
           {/* Custom Date Range — shows only when custom selected */}
           {dateFilter === 'custom' && (
             <div className="flex items-center gap-2 ml-2">
-              <div className="flex items-center gap-1.5 bg-white border border-[#D1D5DC] rounded-lg px-3 py-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#506A84]" />
+              <div className="flex items-center gap-1.5 bg-white border border-ypark-black/10 rounded-lg px-3 py-1.5">
+                <Calendar className="w-3.5 h-3.5 text-ypark-text-muted" />
                 <input
                   type="date"
                   value={customFrom}
                   onChange={(e) => setCustomFrom(e.target.value)}
-                  className="text-xs text-[#1A2332] focus:outline-none bg-transparent"
+                  className="text-xs text-ypark-text focus:outline-none bg-transparent"
                 />
               </div>
-              <span className="text-[#506A84] text-xs font-medium">to</span>
-              <div className="flex items-center gap-1.5 bg-white border border-[#D1D5DC] rounded-lg px-3 py-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#506A84]" />
+              <span className="text-ypark-text-muted text-xs font-medium">to</span>
+              <div className="flex items-center gap-1.5 bg-white border border-ypark-black/10 rounded-lg px-3 py-1.5">
+                <Calendar className="w-3.5 h-3.5 text-ypark-text-muted" />
                 <input
                   type="date"
                   value={customTo}
                   onChange={(e) => setCustomTo(e.target.value)}
-                  className="text-xs text-[#1A2332] focus:outline-none bg-transparent"
+                  className="text-xs text-ypark-text focus:outline-none bg-transparent"
                 />
               </div>
               {customFrom && customTo && (
@@ -226,7 +226,7 @@ const PlatformAnalytics = () => {
                     // When API ready → refetch with customFrom and customTo
                     console.log('Fetch data from', customFrom, 'to', customTo)
                   }}
-                  className="bg-[#1565C0] text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-[#0D47A1] transition-colors"
+                  className="bg-ypark-deep-blue text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:brightness-110 transition-colors"
                 >
                   Apply
                 </button>
@@ -238,7 +238,7 @@ const PlatformAnalytics = () => {
         <select
           value={cityFilter}
           onChange={(e) => setCityFilter(e.target.value)}
-          className="px-3 py-2 text-sm border border-[#D1D5DC] rounded-lg text-[#1A2332] focus:outline-none focus:border-[#1565C0] bg-white"
+          className="px-3 py-2 text-sm border border-ypark-black/10 rounded-lg text-ypark-text focus:outline-none focus:border-ypark-deep-blue bg-white"
         >
           {cities.map((city) => (
             <option key={city} value={city}>
@@ -254,51 +254,51 @@ const PlatformAnalytics = () => {
           label="Total Revenue This Month"
           value={`₹${totalRevenue.toLocaleString()}`}
           icon={IndianRupee}
-          color="bg-[#1565C0]"
+          color="bg-ypark-deep-blue"
           sub="+18.4% from last month"
         />
         <StatCard
           label="Total Parking Visits This Month"
           value="2,616"
           icon={Activity}
-          color="bg-[#00BCD4]"
+          color="bg-ypark-info"
           sub="+11.2% from last month"
         />
         <StatCard
           label="YPark Commission"
           value="₹25,440"
           icon={TrendingUp}
-          color="bg-[#2E7D32]"
+          color="bg-ypark-success"
           sub="+18.4% from last month"
         />
         <StatCard
           label="Active Parking Areas"
           value="14"
           icon={MapPin}
-          color="bg-[#F57F17]"
+          color="bg-ypark-warning"
           sub="3 pending approval"
         />
         <StatCard
           label="Total Vendors"
           value="5"
           icon={Users}
-          color="bg-[#7B1FA2]"
+          color="bg-purple-600"
           sub="+2 this month"
         />
         <StatCard
           label="New Customers This Week"
           value="142"
           icon={UserPlus}
-          color="bg-[#C0392B]"
+          color="bg-ypark-danger"
           sub="+24 from last week"
         />
       </div>
 
       {/* Revenue Chart */}
-      <div className="bg-white rounded-xl border border-[#D1D5DC] p-5">
+      <div className="bg-white rounded-xl border border-ypark-black/10 p-5">
         <div className="mb-4">
-          <h2 className="text-[#1A2332] font-bold text-sm">Revenue Trend</h2>
-          <p className="text-[#506A84] text-xs mt-0.5">
+          <h2 className="text-ypark-text font-bold text-sm">Revenue Trend</h2>
+          <p className="text-ypark-text-muted text-xs mt-0.5">
             Daily revenue breakdown by payment method
           </p>
         </div>
@@ -361,10 +361,10 @@ const PlatformAnalytics = () => {
       <div className="grid grid-cols-2 gap-4">
 
         {/* Top Parking Areas Bar Chart */}
-        <div className="bg-white rounded-xl border border-[#D1D5DC] p-5">
+        <div className="bg-white rounded-xl border border-ypark-black/10 p-5">
           <div className="mb-4">
-            <h2 className="text-[#1A2332] font-bold text-sm">Top Parking Areas by Revenue</h2>
-            <p className="text-[#506A84] text-xs mt-0.5">Best performing parking areas this month</p>
+            <h2 className="text-ypark-text font-bold text-sm">Top Parking Areas by Revenue</h2>
+            <p className="text-ypark-text-muted text-xs mt-0.5">Best performing parking areas this month</p>
           </div>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart
@@ -402,10 +402,10 @@ const PlatformAnalytics = () => {
         </div>
 
         {/* Vehicle Distribution Pie Chart */}
-        <div className="bg-white rounded-xl border border-[#D1D5DC] p-5">
+        <div className="bg-white rounded-xl border border-ypark-black/10 p-5">
           <div className="mb-4">
-            <h2 className="text-[#1A2332] font-bold text-sm">Parking Visits by Vehicle Type</h2>
-            <p className="text-[#506A84] text-xs mt-0.5">Distribution across all parking areas</p>
+            <h2 className="text-ypark-text font-bold text-sm">Parking Visits by Vehicle Type</h2>
+            <p className="text-ypark-text-muted text-xs mt-0.5">Distribution across all parking areas</p>
           </div>
           <div className="flex items-center gap-4">
             <ResponsiveContainer width="60%" height={200}>
@@ -434,8 +434,8 @@ const PlatformAnalytics = () => {
                     style={{ background: item.color }}
                   />
                   <div>
-                    <p className="text-[#1A2332] text-xs font-semibold">{item.name}</p>
-                    <p className="text-[#506A84] text-xs">{item.value}%</p>
+                    <p className="text-ypark-text text-xs font-semibold">{item.name}</p>
+                    <p className="text-ypark-text-muted text-xs">{item.value}%</p>
                   </div>
                 </div>
               ))}
@@ -449,67 +449,67 @@ const PlatformAnalytics = () => {
       <div className="grid grid-cols-2 gap-4">
 
         {/* City Wise Breakdown */}
-        <div className="bg-white rounded-xl border border-[#D1D5DC]">
-          <div className="px-5 py-4 border-b border-[#D1D5DC]">
-            <h2 className="text-[#1A2332] font-bold text-sm">City Wise Breakdown</h2>
-            <p className="text-[#506A84] text-xs mt-0.5">Revenue and parking visits per city</p>
+        <div className="bg-white rounded-xl border border-ypark-black/10">
+          <div className="px-5 py-4 border-b border-ypark-black/10">
+            <h2 className="text-ypark-text font-bold text-sm">City Wise Breakdown</h2>
+            <p className="text-ypark-text-muted text-xs mt-0.5">Revenue and parking visits per city</p>
           </div>
           <table className="w-full">
             <thead>
-              <tr className="bg-[#F0F4F8] border-b border-[#D1D5DC]">
-                <th className="text-left px-5 py-2.5 text-[#506A84] text-xs font-semibold">City</th>
-                <th className="text-left px-4 py-2.5 text-[#506A84] text-xs font-semibold">Parking Areas</th>
-                <th className="text-left px-4 py-2.5 text-[#506A84] text-xs font-semibold">Parking Visits</th>
-                <th className="text-left px-4 py-2.5 text-[#506A84] text-xs font-semibold">Revenue</th>
-                <th className="text-left px-4 py-2.5 text-[#506A84] text-xs font-semibold">Service Charge</th>
+              <tr className="bg-ypark-light-gray border-b border-ypark-black/10">
+                <th className="text-left px-5 py-2.5 text-ypark-text-muted text-xs font-semibold">City</th>
+                <th className="text-left px-4 py-2.5 text-ypark-text-muted text-xs font-semibold">Parking Areas</th>
+                <th className="text-left px-4 py-2.5 text-ypark-text-muted text-xs font-semibold">Parking Visits</th>
+                <th className="text-left px-4 py-2.5 text-ypark-text-muted text-xs font-semibold">Revenue</th>
+                <th className="text-left px-4 py-2.5 text-ypark-text-muted text-xs font-semibold">Service Charge</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#F0F4F8]">
+            <tbody className="divide-y divide-ypark-light-gray">
               {filteredCities.map((city) => (
-                <tr key={city.city} className="hover:bg-[#F0F4F8]/50">
+                <tr key={city.city} className="hover:bg-ypark-light-gray/50">
                   <td className="px-5 py-3">
-                    <p className="text-[#1A2332] text-xs font-semibold">{city.city}</p>
+                    <p className="text-ypark-text text-xs font-semibold">{city.city}</p>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-[#1A2332] text-xs">{city.zones}</span>
+                    <span className="text-ypark-text text-xs">{city.zones}</span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-[#1A2332] text-xs">{city.sessions.toLocaleString()}</span>
+                    <span className="text-ypark-text text-xs">{city.sessions.toLocaleString()}</span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-[#1565C0] text-xs font-bold">
+                    <span className="text-ypark-deep-blue text-xs font-bold">
                       ₹{city.revenue.toLocaleString()}
                     </span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="text-[#2E7D32] text-xs font-bold">
+                    <span className="text-ypark-success text-xs font-bold">
                       ₹{city.commission.toLocaleString()}
                     </span>
                   </td>
                 </tr>
               ))}
               {/* Total Row */}
-              <tr className="bg-[#F0F4F8] border-t border-[#D1D5DC]">
+              <tr className="bg-ypark-light-gray border-t border-ypark-black/10">
                 <td className="px-5 py-3">
-                  <p className="text-[#1A2332] text-xs font-bold">Total</p>
+                  <p className="text-ypark-text text-xs font-bold">Total</p>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="text-[#1A2332] text-xs font-bold">
+                  <span className="text-ypark-text text-xs font-bold">
                     {filteredCities.reduce((s, c) => s + c.zones, 0)}
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="text-[#1A2332] text-xs font-bold">
+                  <span className="text-ypark-text text-xs font-bold">
                     {filteredCities.reduce((s, c) => s + c.sessions, 0).toLocaleString()}
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="text-[#1565C0] text-xs font-bold">
+                  <span className="text-ypark-deep-blue text-xs font-bold">
                     ₹{filteredCities.reduce((s, c) => s + c.revenue, 0).toLocaleString()}
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="text-[#2E7D32] text-xs font-bold">
+                  <span className="text-ypark-success text-xs font-bold">
                     ₹{filteredCities.reduce((s, c) => s + c.commission, 0).toLocaleString()}
                   </span>
                 </td>
@@ -519,10 +519,10 @@ const PlatformAnalytics = () => {
         </div>
 
         {/* Vendor Growth Chart */}
-        <div className="bg-white rounded-xl border border-[#D1D5DC] p-5">
+        <div className="bg-white rounded-xl border border-ypark-black/10 p-5">
           <div className="mb-4">
-            <h2 className="text-[#1A2332] font-bold text-sm">New Vendor Registrations</h2>
-            <p className="text-[#506A84] text-xs mt-0.5">Monthly vendor growth</p>
+            <h2 className="text-ypark-text font-bold text-sm">New Vendor Registrations</h2>
+            <p className="text-ypark-text-muted text-xs mt-0.5">Monthly vendor growth</p>
           </div>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart

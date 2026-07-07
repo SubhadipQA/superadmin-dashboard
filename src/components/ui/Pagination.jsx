@@ -35,10 +35,10 @@ const Pagination = ({ currentPage, totalPages, totalItems, itemsPerPage, onPageC
     <div className="flex items-center justify-between px-1 py-2">
 
       {/* Left — Showing info */}
-      <p className="text-[#506A84] text-xs">
-        Showing <span className="text-[#1A2332] font-semibold">{start}</span> to{' '}
-        <span className="text-[#1A2332] font-semibold">{end}</span> of{' '}
-        <span className="text-[#1A2332] font-semibold">{totalItems}</span> results
+      <p className="text-ypark-text-muted text-xs">
+        Showing <span className="text-ypark-text font-semibold">{start}</span> to{' '}
+        <span className="text-ypark-text font-semibold">{end}</span> of{' '}
+        <span className="text-ypark-text font-semibold">{totalItems}</span> results
       </p>
 
       {/* Right — Page controls */}
@@ -48,7 +48,7 @@ const Pagination = ({ currentPage, totalPages, totalItems, itemsPerPage, onPageC
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="w-8 h-8 rounded-lg flex items-center justify-center border border-[#D1D5DC] text-[#506A84] hover:bg-[#F0F4F8] hover:text-[#1A2332] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="w-8 h-8 rounded-lg flex items-center justify-center border border-ypark-black/10 text-ypark-text-muted hover:bg-ypark-light-gray hover:text-ypark-text disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
@@ -58,7 +58,7 @@ const Pagination = ({ currentPage, totalPages, totalItems, itemsPerPage, onPageC
           page === '...' ? (
             <span
               key={`dots-${index}`}
-              className="w-8 h-8 flex items-center justify-center text-[#506A84] text-xs"
+              className="w-8 h-8 flex items-center justify-center text-ypark-text-muted text-xs"
             >
               ...
             </span>
@@ -68,8 +68,8 @@ const Pagination = ({ currentPage, totalPages, totalItems, itemsPerPage, onPageC
               onClick={() => onPageChange(page)}
               className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold border transition-colors ${
                 currentPage === page
-                  ? 'bg-[#1565C0] text-white border-[#1565C0]'
-                  : 'border-[#D1D5DC] text-[#506A84] hover:bg-[#F0F4F8] hover:text-[#1A2332]'
+                  ? 'bg-ypark-deep-blue text-white border-ypark-deep-blue'
+                  : 'border-ypark-black/10 text-ypark-text-muted hover:bg-ypark-light-gray hover:text-ypark-text'
               }`}
             >
               {page}
@@ -81,7 +81,7 @@ const Pagination = ({ currentPage, totalPages, totalItems, itemsPerPage, onPageC
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="w-8 h-8 rounded-lg flex items-center justify-center border border-[#D1D5DC] text-[#506A84] hover:bg-[#F0F4F8] hover:text-[#1A2332] disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          className="w-8 h-8 rounded-lg flex items-center justify-center border border-ypark-black/10 text-ypark-text-muted hover:bg-ypark-light-gray hover:text-ypark-text disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
