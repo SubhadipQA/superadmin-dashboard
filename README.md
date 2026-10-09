@@ -3,9 +3,9 @@
 Internal Super Admin tool for managing the YPark smart parking platform.
 Built with React + Vite. Connects to YPark Express API backend.
 
-**Version:** 1.1 — Phase 1  
-**Last Updated:** July 2026  
-**Status:** Phase 1 Complete — Mock Data. API connection in progress.
+**Version:** 1.2 — Phase 1
+**Last Updated:** October 2026
+**Status:** Frontend skeleton complete. Express API connection in progress.
 
 ---
 
@@ -24,6 +24,7 @@ Built with React + Vite. Connects to YPark Express API backend.
 11. [Build and Deploy](#11-build-and-deploy)
 12. [Important Rules](#12-important-rules)
 13. [Phase Roadmap](#13-phase-roadmap)
+14. [Project Flow](#14-project-flow)
 
 ---
 
@@ -110,6 +111,8 @@ ypark-admin/
 │   │   │   └── ManualSettlement.jsx
 │   │   ├── analytics/
 │   │   │   └── PlatformAnalytics.jsx
+│   │   ├── support/
+│   │   │   └── SupportManagement.jsx  → Ticket list, creation, details, replies
 │   │   └── customers/
 │   │       └── CustomerManagement.jsx  ← Hidden, Phase 2
 │   │
@@ -218,6 +221,7 @@ See `FRONTEND_GUIDE.md` Section 5 for exact implementation.
 | Vendors | `/vendors` | ✅ Mock data | Manage vendor accounts |
 | Payment Summary | `/settlements` | ✅ Mock data | Daily parking area wise payment summary |
 | Analytics | `/analytics` | ✅ Mock data | Revenue, parking visits, city breakdown charts |
+| Support | `/support` | ✅ UI skeleton | Ticket list, status tabs, new ticket, details and replies |
 | Customers | `/customers` | ⏭ Phase 2 | Hidden — build after customer app |
 
 ---
@@ -296,6 +300,7 @@ Always use `ypark-*` Tailwind classes for consistency.
 5. Connect Vendors                → GET /admin/vendors + suspend + activate
 6. Connect Payment Summary        → GET /admin/settlements/daily + settle-zone
 7. Connect Analytics              → GET /admin/analytics
+8. Connect Support                → POST/GET/PATCH /v1/support/ticket
 ```
 
 **For each page — what to do:**
@@ -305,6 +310,31 @@ Always use `ypark-*` Tailwind classes for consistency.
 4. Add loading state — use shadcn `<Skeleton />`
 5. Add error state — show error message
 6. Test filters still work — they pass as query params
+
+### Support API
+
+The Support page currently uses mock data. Replace the local handlers with these
+Express endpoints when the backend is ready:
+
+```text
+POST  /v1/support/ticket              Create a ticket
+GET   /v1/support/ticket              List tickets
+GET   /v1/support/ticket/:id          Get ticket details and replies
+POST  /v1/support/ticket/reply/:id    Add a reply
+PATCH /v1/support/ticket/read/:id     Mark a ticket as read
+```
+
+Use a status query for the Support tabs:
+
+```text
+GET /v1/support/ticket?status=OPEN
+GET /v1/support/ticket?status=IN_PROGRESS
+GET /v1/support/ticket?status=RESOLVED
+```
+
+Every request must include the authenticated user's bearer token. The Express
+API, not the frontend, is responsible for checking whether the user can access
+the requested ticket or zone.
 
 **Full implementation details for every page:**
 See `FRONTEND_GUIDE.md` — Section 7 and Section 10.
@@ -367,6 +397,7 @@ Without this, refreshing any page other than `/` returns 404.
 ❌ Never add colors outside the defined palette
 ❌ Never build Phase 3 Org Dashboard before first paying client
 ❌ Never mix vendor mobile app logic into this admin panel
+❌ Never trust a frontend role check as the only authorization layer
 ```
 
 **Always do these:**
@@ -378,6 +409,8 @@ Without this, refreshing any page other than `/` returns 404.
 ✅ Follow existing folder structure — pages in pages/, store in store/
 ✅ Test pagination after connecting each API — server side pagination
 ✅ Wrap all API calls in try/catch with user-visible error messages
+✅ Keep Super Admin and Zone Owner access in the same web app with server-side scope filtering
+✅ Keep Vendor operations in the vendor mobile app
 ```
 
 **Display labels vs technical terms:**
@@ -410,6 +443,12 @@ Phase 1 Remaining
 ⬜ Loading states and error handling
 ⬜ Notification system (after API webhooks ready)
 
+Support module
+✅ Support page skeleton and navigation
+✅ Ticket creation, status tabs, details and reply UI with mock data
+⬜ Connect Support UI to `/v1/support/ticket` APIs
+⬜ Add unread counts and production error/loading states
+
 Phase 2
 ⬜ Customer Management page
 ⬜ Automated payment summary — cron job on backend (no frontend change)
@@ -417,10 +456,10 @@ Phase 2
 ⬜ Sub Admin management
 
 Phase 3
-⬜ Org Admin Dashboard (build when first paying client signs up)
-⬜ Org scoped parking area view — filtered by owner_id
-⬜ Org revenue and staff reports
-⬜ White label option per org
+⬜ Zone Owner Dashboard (build when required by the first multi-zone owner)
+⬜ Zone-scoped parking area view — filtered by assigned zone IDs
+⬜ Zone Owner revenue and staff reports
+⬜ Permission-based navigation for Zone Owners
 ```
 
 ---
@@ -430,6 +469,14 @@ Phase 3
 | Document | Purpose |
 |----------|---------|
 | `FRONTEND_GUIDE.md` | Deep dive — every component, every mock data 
+| `PROJECT_FLOW.md` | Frontend-to-Express flow, API contracts, roles and future access model |
+
+## 14. Project Flow
+
+See [`PROJECT_FLOW.md`](PROJECT_FLOW.md) for the complete implementation flow,
+including how the frontend calls Express, how to replace mock data, and how to
+prepare Super Admin and Zone Owner access without adding Vendor functionality
+to this web dashboard.
 
 ---
 
