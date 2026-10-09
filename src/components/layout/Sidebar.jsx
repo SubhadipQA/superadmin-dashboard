@@ -7,6 +7,7 @@ import {
   Users,
   Wallet,
   BarChart3,
+  CircleHelp,
   //UserCircle,
   LogOut,
 } from 'lucide-react'
@@ -37,6 +38,11 @@ const navItems = [
     label: 'Analytics',
     path: '/analytics',
     icon: BarChart3,
+  },
+  {
+    label: 'Support',
+    path: '/support',
+    icon: CircleHelp,
   },
   // {
   //   label: 'Customers',

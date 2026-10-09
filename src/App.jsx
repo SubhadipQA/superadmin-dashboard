@@ -13,6 +13,7 @@ import ZoneApproval from './pages/zones/ZoneApproval'
 import VendorManagement from './pages/vendors/VendorManagement'
 import ManualSettlement from './pages/settlements/ManualSettlement'
 import PlatformAnalytics from './pages/analytics/PlatformAnalytics'
+import SupportManagement from './pages/support/SupportManagement'
 //import CustomerManagement from './pages/customers/CustomerManagement'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="vendors" element={<VendorManagement />} />
         <Route path="settlements" element={<ManualSettlement />} />
         <Route path="analytics" element={<PlatformAnalytics />} />
+        <Route path="support" element={<SupportManagement />} />
         {/* <Route path="customers" element={<ProtectedRoute><CustomerManagement /></ProtectedRoute>} /> */}
       </Route>
 
